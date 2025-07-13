@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="de" class="h-full" data-theme="light">
+<html lang="de" class="h-full">
 
 <head>
     <meta charset="UTF-8">
@@ -14,19 +14,6 @@
 
     <style>
         :root {
-            --bg-color: #f9fafb;
-            --text-color: #111827;
-            --text-color-light: #6b7280;
-            --header-color: #111827;
-            --card-bg: #ffffff;
-            --card-text: #111827;
-            --subtle-text: #6b7280;
-            --border-color: #e5e7eb;
-            --edit-btn-hover-bg: #3b82f6;
-            /* blue-600 */
-        }
-
-        html[data-theme='dark'] {
             --bg-color: #171717;
             --text-color: #fafafa;
             --text-color-light: #a3a3a3;
@@ -58,17 +45,11 @@
             color: var(--subtle-text);
         }
 
-        /* A little extra style for smooth transitions */
-        body,
-        .modal-bg,
-        .modal-box {
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
     </style>
 </head>
 
 <body
-    class="min-h-screen font-sans flex flex-col items-center p-4 sm:p-6 lg:p-8 transition-colors duration-300">
+    class="min-h-screen font-sans flex flex-col items-center p-4 sm:p-6 lg:p-8">
 
     <div class="w-full max-w-3xl mx-auto">
         <!-- Header Section -->
@@ -490,12 +471,6 @@
                 return;
             }
             const message = event.data;
-            if (typeof message === 'string' && message.startsWith('set-theme-')) {
-                const theme = message.split('-')[2];
-                if (theme === 'light' || theme === 'dark') {
-                    document.documentElement.dataset.theme = theme;
-                }
-            }
             if (message && message.type === 'backupDataRequest') {
                 const entriesData = localStorage.getItem('actamea-entries');
                 window.parent.postMessage({
